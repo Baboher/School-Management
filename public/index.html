@@ -4,8 +4,40 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Connexion</title>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-
+    <body class="flex items-center justify-center h-screen bg-indigo-100">
+        <div class="w-[30%] h-[45%] pt-[5%] bg-sky-200 border rounded-xl shadow place-items-center">
+            <form action="" method="post">
+                <table class="h-[100%]">
+                    <tr>
+                        <td class="p-[10px]">
+                            <label for="mat">Matricule :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="mat" id="mat" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-[10px] text-nowrap">
+                            <label for="pw">Mot de Passe : </label>
+                        </td>
+                        <td>
+                            <input type="pw" name="pw" id="pw" required>
+                        </td>
+                    </tr>
+                    <tr class="text-white">
+                        <td colspan="2" class="p-[10px] text-center">
+                            <input type="submit" value="Connexion"name="login" id="login" class="bg-green-300 border-green-300 hover:bg-green-500 hover:border-green-500 rounded-xl w-[150px]">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="p-[10px] text-center">
+                            Mot de passe oublié ? Cliquez <a href=""class="text-blue-500 underline">ici</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </body>
 </html>
