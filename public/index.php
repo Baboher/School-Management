@@ -14,7 +14,7 @@
                 <table class="h-[100%] w-full">
                     <tr class="p-[10px]">
                         <td colspan="2">
-                            <select class="decoration-none capitalize h-[6%] w-full text-center bg-transparent outline outline-offset-1" name="acc_type">
+                            <select class="decoration-none capitalize h-[6%] w-full text-center bg-transparent outline outline-offset-0" name="acc_type">
                                 <option value="students">élève</option>
                                 <option value="teachers">professeur</option>
                             </select>
