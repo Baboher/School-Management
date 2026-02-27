@@ -1,0 +1,48 @@
+.menu{
+	background-color:#0d6efd; /* couleur de fond du menu déroulant */
+	font-family:Bebas Neue Cyrillic; /* utilisation de la police */
+	height:55px; /* hauteur de la barre de menu*/
+	font-size:22.5px; /* taille du texte */
+	width:100%;
+}
+
+.menu ul {
+	display:flex; /* ouvre le display flex */
+	flex-direction:row; /*mets let éléments sur la même ligne*/
+	justify-content:flex-start; /* débute au début de la ligne */
+	align-items:center;/* centre les éléments à la veticale dans la flexbox */
+}
+
+.menu ul li {
+	list-style-type:none; /* retire les boutons de liste*/
+	text-align:center; /* centre le texte */
+	height:40px;
+	padding-top:15px;
+}
+
+
+
+.menu ul li:hover{
+	background-color:rgb(100, 181, 246, 0.5); /* couleur de fond quand on passe la souris */
+}
+
+.menu ul li a{
+	text-decoration:none; /* retire le soulignement des liens */
+	color:#000000; /* couleur du texte */
+}
+
+.option{
+	margin-right:30px; /* mets de la marge entre les options */
+}
+
+.widgets{
+	margin-left:auto; /* mets l'icone de compte à droite */
+}
+
+.widgets a img{ /* propriétéq de l'image */
+	margin-right:0px;
+	position:relative; /* annule le padding sur cet élément */ 
+	top:-15px; /* annule le padding sur cet élément*/
+	width:50px;
+	height:50px;
+}
