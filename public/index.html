@@ -6,10 +6,18 @@
         <title>Connexion</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="flex items-center justify-center h-screen bg-indigo-100">
-        <div class=" pt-[5%] bg-sky-200 border rounded-xl place-items-center size-96 ">
-            <form action="" method="post">
+    <body class="flex items-center justify-center h-screen w-screen bg-indigo-100">
+        <div class=" py-[5%] bg-sky-200 border rounded-xl place-items-center size-96 ">
+            <form action="../src/login.php" method="POST">
                 <table class="h-[100%]">
+                    <tr class="p-[10px]">
+                        <td colspan="2">
+                            <select class="decoration-none capitalize h-[6%] w-full text-center bg-transparent ring" name="a_type">
+                                <option value="student">élève</option>
+                                <option value="teacher">professeur</option>
+                            </select>
+                        </td>
+                    </tr>
                     <tr>
                         <td class="p-[10px]">
                             <label for="mat">Matricule :</label>
