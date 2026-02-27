@@ -36,9 +36,24 @@
                     </tr>
                     <tr class="text-white">
                         <td colspan="2" class="p-[10px] text-center">
-                            <input type="submit" value="Connexion"name="login" id="login" class=" w-full bg-green-300 outline outline-green-300 hover:bg-green-500 hover:outline-green-500">
+                            <input type="submit" value="valider"name="login" id="login" class="capitalize w-full bg-green-300 outline outline-green-300 hover:bg-green-500 hover:outline-green-500">
                         </td>
                     </tr>
+
+                    <?php
+                        // message d'erreur
+
+						if(isset($_POST['message'])){
+                            $message = $_POST['message'];
+                    ?>
+                        <tr>
+                            <td colspan="2" class="text-red-500 text-center">
+                                <?=$message;?>
+                            </td>
+                        </tr>
+                    <?php
+						}
+					?>
                     <tr>
                         <td colspan="2" class="p-[10px] text-center">
                             Mot de passe oublié ? Cliquez <a href=""class="text-blue-500 underline">ici</a>
