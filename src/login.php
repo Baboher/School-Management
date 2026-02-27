@@ -1,46 +1,63 @@
 <?php
 
+// session_start();
+
 include('connect.php'); // connexion à la base de données
 
-function secure($b){
+function secure($b){ // sécurisation des entrées
 	$b = trim($b);
 	$b = htmlspecialchars($b);
 	return $b;
-} // sécurisation des entrées
+} 
 
-function send_error($a){
+function send_error($a){ //  envoi de l'erreur lors de la connexion
     echo( '<form id="error" action="../public/index.php" method="post">
                 <input type="hidden" name="message" value="'. $a .'">
             </form>
             <script>document.getElementById("error").submit();</script>');
 }
 
+function connect($type){
+    // récupère les variables globales concernées
+    global $connexion,$mat,$pw;
+
+    // prépration de la recherche du compte
+    $req = $connexion->prepare("SELECT * FROM " . $type . " WHERE mat = ? AND pw = ?");
+
+    // exécution de la requête
+    $req->execute(array($mat, $pw));
+
+    // récupération du nombre de correspondances
+    $cpt = $req->rowCount();
+            
+    if($cpt == 1){
+        // Connexion réussie, redirection vers une nouvelle page
+        /* $info = $req->fetch(); // récupération des infos
+        $_SESSION['mat'] = $info['mat'];
+        $_SESSION['name'] = $info['name'];
+        $_SESSION['fname'] = $info['fname'];
+        $_SESSION['email'] = $info['email'];
+        $_SESSION['class'] = $info['class']; */
+        header("Location: ../public/" . $type . "_dashboard.html");
+        exit();
+    }else{ // Aucune correspondance
+        $message = "Nom d'utilisateur ou mot de passe incorrect";
+        send_error($message);
+    }
+}
+
 		$mat = secure($_POST['mat']); // récupère le matricule
 		$pw = $_POST['pw']; // récupère le mot de passe
+        $acc_type = secure($_POST['acc_type']);
 
-if(!empty($mat) && !empty($pw)){
-		$req = $connexion->prepare("SELECT * FROM students WHERE mat = ? AND pw = ?");
-		$req->execute(array($mat, $pw));
-		$cpt = $req->rowCount();
-		
-		if($cpt == 1){
-			// Connexion réussie, redirection vers une nouvelle page
-			/* $info = $req->fetch(); // récupération des infos
-			$_SESSION['mat'] = $info['mat'];
-			$_SESSION['name'] = $info['name'];
-			$_SESSION['fname'] = $info['fname'];
-			$_SESSION['email'] = $info['email'];
-			$_SESSION['class'] = $info['class']; */
-			header("Location: ../public/student_dashboard.html");
-			exit();
-		}else{
-            $message = "Désolé, nous ne trouvons pas ce compte";
-            send_error($message);
-		}
-	}else{
-		$message= "Veuillez remplir tous les champs !";
+if(!empty($mat) && !empty($pw)){ // les champ ont été remplis
+
+    connect($acc_type);
+
+}else{ // Cellules vides
+		$message = "Veuillez remplir tous les champs !";
         send_error($message);
-	}
+}
 
 
 ?>

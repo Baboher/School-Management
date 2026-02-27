@@ -1,3 +1,5 @@
+<?php // session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -7,19 +9,19 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="flex items-center justify-center h-screen w-screen bg-indigo-100">
-        <div class=" py-[5%] bg-sky-200 border rounded-xl place-items-center size-96 ">
+        <div class=" py-[5%] bg-sky-200 border rounded-xl place-items-center w-[95%] 2xl:size-96">
             <form action="../src/login.php" method="POST">
-                <table class="h-[100%]">
+                <table class="h-[100%] w-full">
                     <tr class="p-[10px]">
                         <td colspan="2">
-                            <select class="decoration-none capitalize h-[6%] w-full text-center bg-transparent ring" name="a_type">
-                                <option value="student">élève</option>
-                                <option value="teacher">professeur</option>
+                            <select class="decoration-none capitalize h-[6%] w-full text-center bg-transparent outline outline-offset-1" name="acc_type">
+                                <option value="students">élève</option>
+                                <option value="teachers">professeur</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td class="p-[10px]">
+                        <td class="px-[2px] py-[5px] 2xl:p-[10px]">
                             <label for="mat">Matricule :</label>
                         </td>
                         <td>
@@ -27,7 +29,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="p-[10px]">
+                        <td class="px-[2px] py-[5px] 2xl:p-[10px]">
                             <label for="pw">Mot de Passe : </label>
                         </td>
                         <td>
@@ -35,7 +37,7 @@
                         </td>
                     </tr>
                     <tr class="text-white">
-                        <td colspan="2" class="p-[10px] text-center">
+                        <td colspan="2" class="px-[2px] py-[7px] 2xl:p-[10px] text-center">
                             <input type="submit" value="valider"name="login" id="login" class="capitalize w-full bg-green-300 outline outline-green-300 hover:bg-green-500 hover:outline-green-500">
                         </td>
                     </tr>
@@ -47,12 +49,12 @@
                             $message = $_POST['message'];
                     ?>
                         <tr>
-                            <td colspan="2" class="text-red-500 text-center">
+                            <td colspan="2" class="text-[rgb(252,53,0)] text-center">
                                 <?=$message;?>
                             </td>
                         </tr>
                     <?php
-						}
+						} // fin message d'erreur
 					?>
                     <tr>
                         <td colspan="2" class="p-[10px] text-center">
