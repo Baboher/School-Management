@@ -3,15 +3,13 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php include('../src/head.php'); ?>
         <title>Connexion</title>
-        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="flex items-center justify-center h-screen w-screen bg-indigo-100">
         <div class=" py-[5%] bg-sky-200 border rounded-xl place-items-center w-[95%] 2xl:size-96">
             <form action="../src/login.php" method="POST">
-                <table class="h-[100%] w-full">
+                <table class="h-[100%] w-full font-bebas text-[20px]">
                     <tr class="p-[10px]">
                         <td colspan="2">
                             <select class="decoration-none capitalize h-[6%] w-full text-center bg-transparent outline outline-offset-0" name="acc_type">
@@ -25,7 +23,7 @@
                             <label for="mat">Matricule :</label>
                         </td>
                         <td>
-                            <input type="text" name="mat" id="mat" required>
+                            <input type="text" name="mat" id="mat" class="font-sans font-normal text-base" required>
                         </td>
                     </tr>
                     <tr>
@@ -33,7 +31,7 @@
                             <label for="pw">Mot de Passe : </label>
                         </td>
                         <td>
-                            <input type="password" name="pw" id="pw" required>
+                            <input type="password" name="pw" id="pw" class="font-sans font-normal text-base" required>
                         </td>
                     </tr>
                     <tr class="text-white">
@@ -49,7 +47,7 @@
                             $message = $_POST['message'];
                     ?>
                         <tr>
-                            <td colspan="2" class="text-[rgb(252,53,0)] text-center">
+                            <td colspan="2" class="font-open text-[rgb(252,53,0)] text-center text-[15px]">
                                 <?=$message;?>
                             </td>
                         </tr>
@@ -57,7 +55,7 @@
 						} // fin message d'erreur
 					?>
                     <tr>
-                        <td colspan="2" class="p-[10px] text-center">
+                        <td colspan="2" class="p-[10px] font-open text-center text-[15px]">
                             Mot de passe oublié ? Cliquez <a href=""class="text-blue-500 underline">ici</a>
                         </td>
                     </tr>
