@@ -37,6 +37,7 @@ function connect($type){
             if(password_verify($pw, $account['pw'])){
             
             // Connexion réussie, redirection vers une nouvelle page
+            
             /*
             $req = $connexion->prepare("SELECT * FROM " . $type . " WHERE mat_" . $type . " = ? ");
             $req->execute(array($mat)); 
@@ -52,7 +53,7 @@ function connect($type){
             header("Location: ../public/" . $type . "_dashboard.html");
             exit();
 
-        } else{
+        } else{ // mot de passe incorrect
             $message = "Mot de passe incorrect !";
             send_error($message);
         }
