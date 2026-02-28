@@ -22,26 +22,43 @@ function connect($type){
     global $connexion,$mat,$pw;
 
     // prépration de la recherche du compte
-    $req = $connexion->prepare("SELECT * FROM " . $type . " WHERE mat = ? AND pw = ?");
+    $req = $connexion->prepare("SELECT pw FROM " . $type . " WHERE mat_" . $type . " = ? ");
 
     // exécution de la requête
-    $req->execute(array($mat, $pw));
+    $req->execute(array($mat));
 
     // récupération du nombre de correspondances
     $cpt = $req->rowCount();
             
     if($cpt == 1){
-        // Connexion réussie, redirection vers une nouvelle page
-        /* $info = $req->fetch(); // récupération des infos
-        $_SESSION['mat'] = $info['mat'];
-        $_SESSION['name'] = $info['name'];
-        $_SESSION['fname'] = $info['fname'];
-        $_SESSION['email'] = $info['email'];
-        $_SESSION['class'] = $info['class']; */
-        header("Location: ../public/" . $type . "_dashboard.html");
-        exit();
+
+        $account = $req->fetch();
+
+            if(password_verify($pw, $account['pw'])){
+            
+            // Connexion réussie, redirection vers une nouvelle page
+            /*
+            $req = $connexion->prepare("SELECT * FROM " . $type . " WHERE mat_" . $type . " = ? ");
+            $req->execute(array($mat)); 
+            $info = $req->fetch(); // récupération des infos
+            $_SESSION['mat'] = $info['mat_'.$type];
+            $_SESSION['name'] = $info['name'];
+            $_SESSION['fname'] = $info['fname'];
+            $_SESSION['mail'] = $info['mail'];
+            if(isset($info['class']){
+                $_SESSION['class'] = $info['class'];
+            }
+            */
+            header("Location: ../public/" . $type . "_dashboard.html");
+            exit();
+
+        } else{
+            $message = "Mot de passe incorrect !";
+            send_error($message);
+        }
+
     }else{ // Aucune correspondance
-        $message = "Nom d'utilisateur ou mot de passe incorrect";
+        $message = "Utilisateur introuvable !";
         send_error($message);
     }
 }
