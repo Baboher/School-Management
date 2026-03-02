@@ -11,7 +11,7 @@ function secure($b){ // sécurisation des entrées
 } 
 
 function send_error($a){ //  envoi de l'erreur lors de la connexion
-    echo( '<form id="error" action="../public/index.php" method="post">
+    echo( ' <form id="error" action="../public/index.php" method="post">
                 <input type="hidden" name="message" value="'. $a .'">
             </form>
             <script>document.getElementById("error").submit();</script>');

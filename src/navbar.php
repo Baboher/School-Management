@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!isset($_SESSION['mat'])){
+if(!isset($_SESSION['mat'])){ // redirrige vers la page de connexion si non conecté
   header("Location: ../public/index.php");
 }
 

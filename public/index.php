@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['mat'])){
+if(isset($_SESSION['mat'])){ // redirige vers le dashboard si connecté
   header("Location: ../public/" . $_SESSION['acc_type'] . "_dashboard.php");
 }
 
