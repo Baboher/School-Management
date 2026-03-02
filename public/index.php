@@ -1,4 +1,11 @@
-<?php // session_start(); ?>
+<?php
+session_start();
+
+if(isset($_SESSION['mat'])){
+  header("Location: ../public/" . $_SESSION['acc_type'] . "_dashboard.php");
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">

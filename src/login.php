@@ -1,6 +1,6 @@
 <?php
 
-// session_start();
+session_start();
 
 include('connect.php'); // connexion à la base de données
 
@@ -19,7 +19,7 @@ function send_error($a){ //  envoi de l'erreur lors de la connexion
 
 function connect($type){
     // récupère les variables globales concernées
-    global $connexion,$mat,$pw;
+    global $connexion,$mat,$pw, $_SESSION;
 
     // prépration de la recherche du compte
     $req = $connexion->prepare("SELECT pw FROM " . $type . " WHERE mat_" . $type . " = ? ");
@@ -38,18 +38,21 @@ function connect($type){
             
             // Connexion réussie, redirection vers une nouvelle page
             
-            /*
+            
             $req = $connexion->prepare("SELECT * FROM " . $type . " WHERE mat_" . $type . " = ? ");
             $req->execute(array($mat)); 
             $info = $req->fetch(); // récupération des infos
-            $_SESSION['mat'] = $info['mat_'.$type];
+            $_SESSION['mat'] = $info['mat_'. $type];
             $_SESSION['name'] = $info['name'];
             $_SESSION['fname'] = $info['fname'];
             $_SESSION['mail'] = $info['mail'];
-            if(isset($info['class']){
-                $_SESSION['class'] = $info['class'];
+            $_SESSION['acc_type'] = $type;
+            /* if(isset($info['class'])){
+                global $_SESSION['class'] = $info['class'];
+            
             }
-            */
+                */
+            
             header("Location: ../public/" . $type . "_dashboard.php");
             exit();
 
