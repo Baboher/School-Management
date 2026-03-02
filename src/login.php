@@ -50,7 +50,7 @@ function connect($type){
                 $_SESSION['class'] = $info['class'];
             }
             */
-            header("Location: ../public/" . $type . "_dashboard.html");
+            header("Location: ../public/" . $type . "_dashboard.php");
             exit();
 
         } else{ // mot de passe incorrect
